@@ -9,10 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterPostList: [
-        {name: 'Ben', body: 'Hello world one!', vote: 0, comment: []},
-        {name: 'Tae', body: 'Hello world two!', vote: 0, comment: []},
-      ]
+      masterPostList: []
     };
     this.handleAddingNewPostToList = this.handleAddingNewPostToList.bind(this);
   }

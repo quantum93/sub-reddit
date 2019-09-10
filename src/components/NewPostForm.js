@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 function NewPostForm(props) {
   let _name = null;
   let _body = null;
 
   function handleNewPostFormSubmission(event) {
-    event.preventDafault();
-    props.onNewPostCreation({name: _name.value, body: _body.value, vote: 0, comment: []});
+    event.preventDefault();
+    props.onNewPostCreation({ name: _name.value, body: _body.value, vote: 0, comment: [], id: v4() });
     _name.value = '';
     _body.value = '';
   }
