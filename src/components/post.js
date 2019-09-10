@@ -13,7 +13,7 @@ function Post(props) {
   );
 }
 
-Post.PropTypes = {
+Post.propTypes = {
   name: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   vote: PropTypes.number.isRequired,
