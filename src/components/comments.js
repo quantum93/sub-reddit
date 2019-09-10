@@ -1,20 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import NewCommentForm from './NewCommentForm';
 
-class Comments extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render(){
-    console.log(this.props);
-    if (this.props.location.state){
-      const { post } = this.props.location.state
-      // let post = { name: 'Ben', body: 'Hello', vote: 0, comments: [ {name:'Tae', body:'Static first'}, {name:'Tae', body:'Dynamic second'}]};
+function Comments(props) {
+    console.log("comments props", props);
+    if (props.post)  {
+      const post = props.post
       return(
         <div>
         <h1>Comments</h1>
         <Link to='/'>Home</Link>
+        <NewCommentForm
+          onNewCommentCreation={props.onNewCommentCreation}
+          postIndex={props.postIndex}/>
         <hr />
         {post.comments.map((comment, i) =>
           <div>
@@ -31,6 +29,5 @@ class Comments extends React.Component {
       );
     }
   }
-}
 
 export default Comments;

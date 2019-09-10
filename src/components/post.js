@@ -21,7 +21,7 @@ function Post(props) {
       <button onClick={decrement}>Down vote</button>
       <Link to={{
         pathname: '/comments',
-        state: { post: props.toPost }
+        state: { postIndex: props.index, post: props.toPost }
       }}>Comments</Link>
       <hr/>
     </div>

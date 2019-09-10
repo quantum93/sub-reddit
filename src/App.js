@@ -18,6 +18,7 @@ class App extends React.Component {
       commentIndex: null
     };
     this.handleAddingNewPostToList = this.handleAddingNewPostToList.bind(this);
+    this.handleAddingNewCommentToList = this.handleAddingNewCommentToList.bind(this);
     this.handleVote = this.handleVote.bind(this);
   }
 
@@ -39,8 +40,11 @@ class App extends React.Component {
     this.setState({masterPostList: newMasterPostList})
   }
 
-  handleCommentsLinkClick(index) {
-    this.setState({commentIndex: index})
+  handleAddingNewCommentToList(postIndex, newComment) {
+    let newMasterPostList = this.state.masterPostList.slice();
+    let post = newMasterPostList[postIndex]
+    post.comments.push(newComment);
+    this.setState({newMasterPostList: newMasterPostList})
   }
 
   render() {
@@ -53,7 +57,10 @@ class App extends React.Component {
             <PostList postList={this.state.masterPostList} onVote={this.handleVote}/>
           </div>
         }/>
-        <Route path='/comments' component={Comments} />
+        <Route path='/comments' render={(props) => <Comments
+          onNewCommentCreation={this.handleAddingNewCommentToList}
+          post={props.location.state ? props.location.state.post : null}
+          postIndex={props.location.state ? props.location.state.postIndex : null} />} />
       </Switch>
       </div>
     );
