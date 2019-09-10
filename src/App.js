@@ -15,7 +15,6 @@ class App extends React.Component {
   }
 
   handleAddingNewPostToList(newPost) {
-    console.log("new post being added to list");
     var newMasterPostList = this.state.masterPostList.slice();
     newMasterPostList.push(newPost);
     this.setState({masterPostList: newMasterPostList})

@@ -7,11 +7,8 @@ function PostList(props) {
     <div>
     <hr/>
     {props.postList.map((post) =>
-      <Post name={post.name}
-        body={post.body}
-        vote={post.vote}
-        comment={post.comment}
-        key={post.id} />
+      <Post toPost={post}
+      key={post.id} />
     )}
     </div>
   );
