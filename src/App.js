@@ -27,10 +27,11 @@ class App extends React.Component {
   handleVote(index, increment) {
     let newMasterPostList = this.state.masterPostList.slice();
     let post = newMasterPostList[index]
+    console.log(post)
     if (increment){
       post.vote++;
     } else {
-      post.vote--
+      post.vote--;
     }
     this.setState({masterPostList: newMasterPostList})
   }

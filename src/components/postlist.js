@@ -8,10 +8,9 @@ function PostList(props) {
     <hr/>
     {props.postList.map((post, i) =>
       <Post toPost={post}
-      index={i}
-      key={post.id}
-      onVote={props.onVote}
-      />
+        index={i}
+        key={post.id}
+        onVote={props.onVote} />
     )}
     </div>
   );
