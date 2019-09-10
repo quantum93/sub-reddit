@@ -7,7 +7,7 @@ function NewPostForm(props) {
 
   function handleNewPostFormSubmission(event) {
     event.preventDafault();
-    props.onNewPostCreation({name: _name.value, body: _body.value});
+    props.onNewPostCreation({name: _name.value, body: _body.value, vote: 0, comment: []});
     _name.value = '';
     _body.value = '';
   }
