@@ -1,13 +1,12 @@
 import React from 'react';
 import Post from 'post';
-import PropTypes from 'prop-types' ;
 
 function PostList(props) {
   return (
     <div>
     <hr/>
     {props.postList.map((post) =>
-      <Post names={post.names}
+      <Post name={post.name}
         body={post.body}
         vote={post.vote}
         comment={post.comment}
