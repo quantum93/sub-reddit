@@ -4,6 +4,8 @@ import './App.css';
 import PostList from './components/postlist';
 import NewPostForm from './components/NewPostForm';
 import { v4 } from 'uuid';
+import {Switch, Route} from 'react-router-dom';
+import Comments from './components/comments';
 
 class App extends React.Component {
 
@@ -11,8 +13,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       masterPostList: [
-        { name: 'Ben', body: 'Hello', vote: 0, comments: [], id: v4() }
-      ]
+        { name: 'Ben', body: 'Hello', vote: 0, comments: [ {name:'Tae', body:'Static first'}, {name:'Tae', body:'Dynamic second'}], id: v4() }
+      ],
+      commentIndex: null
     };
     this.handleAddingNewPostToList = this.handleAddingNewPostToList.bind(this);
     this.handleVote = this.handleVote.bind(this);
@@ -36,11 +39,22 @@ class App extends React.Component {
     this.setState({masterPostList: newMasterPostList})
   }
 
+  handleCommentsLinkClick(index) {
+    this.setState({commentIndex: index})
+  }
+
   render() {
     return (
       <div className="App">
-        <NewPostForm onNewPostCreation={this.handleAddingNewPostToList}/>
-        <PostList postList={this.state.masterPostList} onVote={this.handleVote}/>
+      <Switch>
+        <Route exact path='/' render={() =>
+          <div>
+            <NewPostForm onNewPostCreation={this.handleAddingNewPostToList}/>
+            <PostList postList={this.state.masterPostList} onVote={this.handleVote}/>
+          </div>
+        }/>
+        <Route path='/comments' component={Comments} />
+      </Switch>
       </div>
     );
   }
