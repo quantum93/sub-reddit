@@ -4,16 +4,11 @@ import PropTypes from 'prop-types';
 function Post(props) {
 
   function increment() {
-    console.log('Hey')
-    props.toPost.vote++;
-    console.log(props.toPost.vote);
-
+    props.onVote(props.index, true)
   }
 
   function decrement() {
-    if (props.toPost.vote > 0) {
-      props.toPost.vote--;
-    }
+    props.onVote(props.index, false)
   }
 
   return (
@@ -30,7 +25,8 @@ function Post(props) {
 }
 
 Post.propTypes = {
-  toPost: PropTypes.object.isRequired
+  toPost: PropTypes.object.isRequired,
+  onVote: PropTypes.func.isRequired
 }
 
 export default Post;

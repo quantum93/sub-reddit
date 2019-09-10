@@ -6,9 +6,12 @@ function PostList(props) {
   return (
     <div>
     <hr/>
-    {props.postList.map((post) =>
+    {props.postList.map((post, i) =>
       <Post toPost={post}
-      key={post.id} />
+      index={i}
+      key={post.id}
+      onVote={props.onVote}
+      />
     )}
     </div>
   );
@@ -16,6 +19,7 @@ function PostList(props) {
 
 PostList.propTypes = {
   postList: PropTypes.array.isRequired,
+  onVote: PropTypes.func.isRequired
 }
 
 export default PostList;
